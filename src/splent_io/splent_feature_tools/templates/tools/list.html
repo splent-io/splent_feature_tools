@@ -1,0 +1,28 @@
+{% extends "public_base.html" %}
+
+{% block title %}Tools — {{ SPLENT_APP }}{% endblock %}
+
+{% block hero %}
+    {{ render_block('hero', eyebrow='Research', title='Tools',
+                    subtitle='Tools and frameworks built and maintained by the lab.') }}
+{% endblock %}
+
+{% block content %}
+<div class="container section">
+    {% for status, tools in groups.items() %}
+    <h2 class="section-title">{{ status | capitalize }}</h2>
+    <div class="card-grid">
+        {% for t in tools %}
+        <a class="card" href="{{ url_for('tools.detail', slug=t.slug) }}">
+            {% if t.logo %}<img class="card__img" src="{{ t.logo }}" alt="">{% endif %}
+            <span class="badge">{{ t.status }}</span>
+            <h3 class="card__title">{{ t.name }}</h3>
+            {% if t.summary %}<p class="card__text">{{ t.summary }}</p>{% endif %}
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="card__text">No tools yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

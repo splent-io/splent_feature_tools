@@ -1,0 +1,23 @@
+{% extends "public_base.html" %}
+
+{% block title %}{{ tool.name }} — {{ SPLENT_APP }}{% endblock %}
+
+{% block hero %}
+    {{ render_block('hero', eyebrow=tool.status, title=tool.name, subtitle=tool.summary) }}
+{% endblock %}
+
+{% block content %}
+<article class="container section">
+    {% if tool.logo %}
+    <img src="{{ tool.logo }}" alt="" style="max-width:100%;border-radius:var(--brand-radius);margin:1rem 0">
+    {% endif %}
+    <div class="prose">{{ tool.description | safe }}</div>
+    {% if tool.github or tool.website %}
+    <p style="margin-top:1.5rem">
+        {% if tool.github %}<a class="btn btn-primary" href="{{ tool.github }}">GitHub</a>{% endif %}
+        {% if tool.website %}<a class="btn btn-secondary" href="{{ tool.website }}">Website</a>{% endif %}
+    </p>
+    {% endif %}
+    <p style="margin-top:2rem"><a href="{{ url_for('tools.index') }}">← Back to tools</a></p>
+</article>
+{% endblock %}
