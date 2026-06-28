@@ -1,0 +1,61 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ 'Edit tool' if tool else 'Add tool' }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ 'Edit tool' if tool else 'Add tool' }}</h1>
+    <a href="{{ url_for('tools.admin_index') }}" class="btn btn-outline-secondary">← Back to tools</a>
+</div>
+
+<form method="POST" class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Name *</label>
+                <input name="name" class="form-control" required value="{{ tool.name if tool else '' }}">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <select name="status" class="form-select">
+                    {% for g in known_groups %}<option value="{{ g }}" {{ 'selected' if (tool and tool.status == g) else '' }}>{{ g }}</option>{% endfor %}
+                </select>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Summary</label>
+                <input name="summary" class="form-control" value="{{ tool.summary if tool else '' }}" placeholder="Short one-line description">
+            </div>
+            <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="5">{{ tool.description if tool else '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Logo URL</label>
+                <input name="logo" type="url" class="form-control" value="{{ tool.logo if tool else '' }}">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">GitHub URL</label>
+                <input name="github" type="url" class="form-control" value="{{ tool.github if tool else '' }}">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Website URL</label>
+                <input name="website" type="url" class="form-control" value="{{ tool.website if tool else '' }}">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Order</label>
+                <input name="order" type="number" class="form-control" value="{{ tool.order if tool else 0 }}">
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="published" id="published" {{ 'checked' if (tool.published if tool else True) else '' }}>
+                    <label class="form-check-label" for="published">Published</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <a href="{{ url_for('tools.admin_index') }}" class="btn btn-link text-muted">Cancel</a>
+        <button class="btn btn-primary" type="submit">{{ 'Save changes' if tool else 'Add tool' }}</button>
+    </div>
+</form>
+{% endblock %}
