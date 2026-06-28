@@ -63,9 +63,7 @@ def _unique_slug(name, exclude_id=None):
 def _ordered_groups():
     """All tools (incl. drafts) grouped by status; KNOWN_STATUSES first, extras after."""
     grouped = {}
-    for t in Tool.query.order_by(
-        Tool.order.asc(), Tool.name.asc()
-    ).all():
+    for t in Tool.query.order_by(Tool.order.asc(), Tool.name.asc()).all():
         grouped.setdefault(t.status or "other", []).append(t)
     ordered = {g: grouped.pop(g) for g in KNOWN_STATUSES if g in grouped}
     ordered.update(grouped)
@@ -73,9 +71,7 @@ def _ordered_groups():
 
 
 def _known_groups():
-    existing = [
-        s[0] for s in db.session.query(Tool.status).distinct().all() if s[0]
-    ]
+    existing = [s[0] for s in db.session.query(Tool.status).distinct().all() if s[0]]
     seen, out = set(), []
     for g in KNOWN_STATUSES + existing:
         if g and g not in seen:

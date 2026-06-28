@@ -10,7 +10,7 @@ class Tool(db.Model):
     name = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False, unique=True, index=True)
     summary = db.Column(db.Text, default="")
-    description = db.Column(db.Text, default="")      # rich text / HTML
+    description = db.Column(db.Text, default="")  # rich text / HTML
     logo = db.Column(db.String(512), default="")
     github = db.Column(db.String(512), default="")
     website = db.Column(db.String(512), default="")
