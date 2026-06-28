@@ -3,8 +3,8 @@
 {% block title %}Tools — {{ SPLENT_APP }}{% endblock %}
 
 {% block hero %}
-    {{ render_block('hero', eyebrow='Research', title='Tools',
-                    subtitle='Tools and frameworks built and maintained by the lab.') }}
+    {{ render_block('hero', eyebrow=_('Research'), title=_('Tools'),
+                    subtitle=_('Tools and frameworks built and maintained by the lab.')) }}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
         {% endfor %}
     </div>
     {% else %}
-    <p class="card__text">No tools yet.</p>
+    <p class="card__text">{{ _('No tools yet.') }}</p>
     {% endfor %}
 </div>
 {% endblock %}

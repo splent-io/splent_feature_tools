@@ -1,0 +1,47 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-28 10:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: src/splent_io/splent_feature_tools/templates/tools/detail.html:17
+msgid "GitHub"
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/detail.html:18
+msgid "Website"
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/detail.html:21
+msgid "Back to tools"
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/list.html:6
+msgid "Research"
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/list.html:6
+msgid "Tools"
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/list.html:7
+msgid "Tools and frameworks built and maintained by the lab."
+msgstr ""
+
+#: src/splent_io/splent_feature_tools/templates/tools/list.html:25
+msgid "No tools yet."
+msgstr ""
+
