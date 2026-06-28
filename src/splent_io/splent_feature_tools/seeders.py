@@ -78,6 +78,7 @@ TOOLS = [
         "facilitate subsequent automatic analysis in search of security risks.",
         "website": "",
         "github": "https://github.com/GermanMT/depex",
+        "logo": "https://github.com/diverso-lab.png",
         "status": "prototype",
     },
     {
@@ -98,6 +99,7 @@ TOOLS = [
         "FeatureIDE formats are supported.",
         "website": "",
         "github": "https://github.com/jmhorcas/fm_characterization",
+        "logo": "https://github.com/diverso-lab.png",
         "status": "prototype",
     },
     {
@@ -137,6 +139,14 @@ def _slugify(name: str) -> str:
     return "-".join(name.lower().replace("/", " ").split())
 
 
+def _gh_owner_avatar(github_url: str) -> str:
+    """Derive the GitHub owner avatar (the tool's real logo) from its repo URL."""
+    import re
+
+    m = re.match(r"https?://github\.com/([^/]+)", github_url or "")
+    return "https://github.com/{}.png".format(m.group(1)) if m else ""
+
+
 class ToolsSeeder(BaseSeeder):
     def run(self):
         self.seed(
@@ -148,6 +158,7 @@ class ToolsSeeder(BaseSeeder):
                     description="<p>{}</p>".format(t["summary"]),
                     github=t["github"],
                     website=t["website"],
+                    logo=t.get("logo") or _gh_owner_avatar(t["github"]),
                     status=t["status"],
                     order=i,
                     published=True,
